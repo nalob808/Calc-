@@ -1,26 +1,12 @@
+"use client";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-export default async function HomePage() {
-  /* Try to fetch latest video ID from our API; fall back to a channel embed */
-  let latestVideoId = "";
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"}/api/youtube/archive?limit=1`,
-      { next: { revalidate: 300 } }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      latestVideoId = data?.videos?.[0]?.videoId ?? "";
-    }
-  } catch {
-    /* ignore – we'll show a placeholder */
-  }
-
-  const embedUrl = latestVideoId
-    ? `https://www.youtube.com/embed/${latestVideoId}?rel=0`
-    : "https://www.youtube.com/embed/live_stream?channel=UCkPKHsQsZ7KBaVgr0EVMuHg&rel=0";
+export default function HomePage() {
+  const embedUrl =
+    "https://www.youtube.com/embed/live_stream?channel=UCkPKHsQsZ7KBaVgr0EVMuHg&rel=0";
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -58,7 +44,7 @@ export default async function HomePage() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <a
-              href={embedUrl.replace("/embed/", "/watch?v=").replace("?rel=0", "")}
+              href="https://www.youtube.com/@kawaiahao/live"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold text-base px-8 py-3"
