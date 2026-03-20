@@ -1,11 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "10mb",
-    },
-  },
+  output: "export",
+  basePath: "/Calc-/church",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
