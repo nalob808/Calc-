@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master, claude/church-livestream-automation-WdTuu]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: kawaiahao-stream/package-lock.json
+
+      # Build the church app (Next.js static export)
+      - run: npm ci
+        working-directory: kawaiahao-stream
+
+      - run: rm -rf src/app/api
+        working-directory: kawaiahao-stream
+
+      - run: npm run build
+        working-directory: kawaiahao-stream
+
+      # Assemble the final site:
+      # - Root files (calculator) from repo root
+      # - Church app from kawaiahao-stream/out/ → site/church/
+      - name: Assemble site
+        run: |
+          mkdir -p site/church
+          # Copy calculator files (root-level static site)
+          cp index.html site/ 2>/dev/null || true
+          cp manifest.webmanifest site/ 2>/dev/null || true
+          cp sw.js site/ 2>/dev/null || true
+          cp icon-*.png site/ 2>/dev/null || true
+          # Copy church app build output
+          cp -r kawaiahao-stream/out/* site/church/
+          # Prevent Jekyll from ignoring _next/ folders
+          touch site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

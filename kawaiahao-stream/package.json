@@ -1,0 +1,41 @@
+{
+  "name": "kawaiahao-stream",
+  "version": "1.0.0",
+  "description": "Kawaiahao Church livestream automation system",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "setup": "npx tsx scripts/setup-oauth.ts"
+  },
+  "private": true,
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "bcryptjs": "^3.0.3",
+    "google-auth-library": "^10.6.2",
+    "googleapis": "^171.4.0",
+    "jsonwebtoken": "^9.0.3",
+    "next": "^16.2.0",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.3",
+    "pdf-parse": "^1.1.1",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2",
+    "twilio": "^5.13.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "^7.0.11",
+    "@types/pdf-parse": "^1.1.5",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.0"
+  }
+}

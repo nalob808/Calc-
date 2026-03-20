@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/bulletin",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/cron/golive",
+      "schedule": "14 19 * * 0"
+    },
+    {
+      "path": "/api/cron/monitor",
+      "schedule": "* 21-24,0-4 * * 0"
+    }
+  ]
+}
