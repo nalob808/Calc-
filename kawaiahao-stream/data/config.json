@@ -1,0 +1,40 @@
+{
+  "bulletin_senders": [
+    "office@kawaiahao.org",
+    "secretary@kawaiahao.org"
+  ],
+  "bulletin_keywords": [
+    "bulletin",
+    "order of service",
+    "sunday",
+    "worship"
+  ],
+  "service_times": {
+    "sunday": "9:15 AM HST",
+    "default_end": "11:00 AM HST"
+  },
+  "church": {
+    "name": "Kawaiahao Church",
+    "address": "957 Punchbowl St, Honolulu, HI 96813",
+    "website": "https://kawaiahao.org",
+    "phone": "(808) 469-3000",
+    "email": "office@kawaiahao.org",
+    "giving_url": "https://kawaiahao.org/giving"
+  },
+  "monitoring_window": {
+    "start_day": "Thursday",
+    "start_hour": 12,
+    "end_day": "Saturday",
+    "end_hour": 12,
+    "timezone": "Pacific/Honolulu"
+  },
+  "stream_safety_net_hour": 14,
+  "silence_threshold_minutes": 5,
+  "youtube_cache_hours": 3,
+  "playlists": {
+    "sunday_services": "Sunday Services",
+    "concerts": "Concerts",
+    "special_events": "Special Events",
+    "memorials": "Memorials"
+  }
+}
